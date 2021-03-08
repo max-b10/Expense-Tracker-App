@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1>Expense Tracker</h1>
+      <!-- <h2>Add expenses below</h2> -->
+      <!-- <h2>Account Balance:</h2> -->
+    </div>
+    <div class="actions">
+      <div class="actions__container">
+        <input
+          type="text"
+          name="text"
+          id="searchExpenses"
+          placeholder="Search Expense"
+        />
+      </div>
+    </div>
+    <div class="container">
+      <p class="empty-message">No expenses match your search</p>
+      <div>
+        <h3 class="expenseHeader">Expense Total:</h3>
+      </div>
+      <div id="expenses"></div>
+      <form id="addExpenseForm" action="">
+        <input
+          type="text"
+          name="text"
+          class="input"
+          placeholder="Enter Expense"
+        />
+        <button class="button" id="addExpense">Add Expense</button>
+        <button class="button" id="removeExpenses">Remove All Expenses</button>
+      </form>
+    </div>
+    <script src="/scripts/app.js"></script>
+  </body>
+</html>
