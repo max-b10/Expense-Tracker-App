@@ -26,22 +26,9 @@ const filters = {
   searchText: "",
 };
 
-// Calculate and render the total expenses to the expenseHeader.
-const totalAmount = function (expenses) {
-  let expenseTotal = 0;
-  for (let i = 0; i < expenses.length; i++) {
-    expenseTotal += expenses[i].amount;
-  }
-  return expenseTotal;
-};
-totalAmount(expenses);
-const expenseTotal = totalAmount(expenses);
-document.querySelector(
-  ".expenseHeader"
-).innerHTML = `Expense Total: £${expenseTotal}.`;
-
+// Render the expenses array to the expenses div. Requires the filters object to
 const renderExpenses = function (expenses, filters) {
-  // Spits out a new array where each expense matches the searchText in the filters object.
+  // Using filter() spits out a new array where each expense inludes the searchText entered by the user in the filters object.
   const filteredExpenses = expenses.filter(function (expense) {
     return expense.description
       .toLowerCase()
@@ -58,29 +45,7 @@ const renderExpenses = function (expenses, filters) {
 };
 renderExpenses(expenses, filters);
 
-// // Add a p tag for each expense to the expenses div.
-// expenses.forEach(function (expense) {
-//   const newPara = document.createElement("p");
-//   newPara.textContent = `${expense.description}: £${expense.amount}`;
-//   document.querySelector("#expenses").appendChild(newPara);
-// });
-
-// Add expense button just console logging for now.
-document.querySelector("#addExpense").addEventListener("click", function (e) {
-  console.log("Expense Added");
-  e.preventDefault();
-});
-// Remove expense button removing all items with the 'expenses' class.
-document
-  .querySelector("#removeExpenses")
-  .addEventListener("click", function (e) {
-    document.querySelectorAll("#expenses").forEach(function (expense) {
-      expense.remove();
-    });
-    e.preventDefault();
-  });
-
-// Search expenses filter
+// The 'search for expenses' filter:
 document
   .querySelector("#searchExpenses")
   .addEventListener("input", function (e) {
@@ -89,3 +54,31 @@ document
     // Now call renderExpenses to render the updated expenses and filters values.
     renderExpenses(expenses, filters);
   });
+
+document
+  .querySelector("#addExpenseForm")
+  .addEventListener("submit", function (e) {
+    e.preventDefault();
+    // Pushes on the user's form input to the expenses array.
+    expenses.push({
+      description: e.target.elements.addExpenseInput.value,
+      amount: Math.floor(Math.random() * 500) + 1,
+    });
+    // This will clear the form field upon submission. Pro user experience!!!
+    e.target.elements.addExpenseInput.value = "";
+    renderExpenses(expenses, filters);
+  });
+
+// Calculate and render the total expenses to the expenseHeader.
+const totalAmount = function (expenses) {
+  let expenseTotal = 0;
+  for (let i = 0; i < expenses.length; i++) {
+    expenseTotal += expenses[i].amount;
+  }
+  return expenseTotal;
+};
+totalAmount(expenses);
+const expenseTotal = totalAmount(expenses);
+document.querySelector(
+  ".expenseHeader"
+).innerHTML = `Expense Total: £${expenseTotal}.`;

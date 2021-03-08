@@ -15,16 +15,22 @@
     </div>
     <div class="actions">
       <div class="actions__container">
-        <input
-          type="text"
-          name="text"
-          id="searchExpenses"
-          placeholder="Search Expense"
-        />
+        <label for=""
+          >Search:
+          <input
+            type="text"
+            name="text"
+            id="searchExpenses"
+            placeholder="Search Expense"
+        /></label>
+        <select name="" id="filterBy">
+          <option value="byHighLow">Sort high - low</option>
+          <option value="byRecent">Sort by recently added</option>
+        </select>
       </div>
     </div>
     <div class="container">
-      <p class="empty-message">No expenses match your search</p>
+      <p class="emptyMessage">No expenses match your search</p>
       <div>
         <h3 class="expenseHeader">Expense Total:</h3>
       </div>
@@ -32,12 +38,11 @@
       <form id="addExpenseForm" action="">
         <input
           type="text"
-          name="text"
+          name="addExpenseInput"
           class="input"
           placeholder="Enter Expense"
         />
-        <button class="button" id="addExpense">Add Expense</button>
-        <button class="button" id="removeExpenses">Remove All Expenses</button>
+        <button class="button" id="addExpenseButton">Add Expense</button>
       </form>
     </div>
     <script src="/scripts/app.js"></script>
