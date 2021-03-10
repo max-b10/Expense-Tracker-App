@@ -1,5 +1,5 @@
 // Read expenses from Local Storage:
-const getSavedExpenses = function () {
+const getSavedExpenses = () => {
   // Get any expenses which have been saved to localStorage and return that parsed
   // JSON data.
   // If there's no saved data in LS, return an empty array.
@@ -11,33 +11,62 @@ const getSavedExpenses = function () {
   }
 };
 // Save each form submission to LS - converting the object to JSON:
-const saveExpenses = function (expenses) {
+const saveExpenses = (expenses) =>
   localStorage.setItem("expenses", JSON.stringify(expenses));
+
+// findIndex() returns the index of the 1st element in expenses that satisfies the provided testing function.
+// Otherwise, it returns - 1, indicating that no element in expenses passed that test.
+const removeExpense = (id) => {
+  const expenseIndex = expenses.findIndex((expense) => {
+    //  findIndex() returns true when the expense.id = the id param in the removeExpense function.
+    return expense.id === id;
+  });
+  // So if expenseIndex returned 1, use splice to cut that index out of the expenses array:
+  if (expenseIndex > -1) {
+    expenses.splice(expenseIndex, 1);
+  }
 };
 
-const generateExpenseDOM = function (expense) {
+const generateExpenseDOM = (expense) => {
   const expenseEl = document.createElement("div");
-  const textEl = document.createElement("span");
+  const textEl = document.createElement("a");
   const removeButton = document.createElement("button");
+  expenseEl.className = "expenseElement";
 
-  // Set button text content and append it to each expenseEl div.
-  removeButton.textContent = "x";
-  expenseEl.appendChild(removeButton);
+  // Set the href on the anchor tag created for each expense text element (using the expense id):
+  textEl.setAttribute("href", `/edit.html#${expense.id}`);
+  textEl.className = "expenseText";
 
-  // If the expenses description is > 0, create a span element with that value.
+  // If the expenses description is > 0, create an anchor element with that description (plus amount).
   // If not, use 'unnamed expense' as a default.
   if (expense.description.length > 0) {
-    textEl.textContent = `${expense.description}: £${expense.amount}`;
+    textEl.textContent = ` ${expense.description}: £${expense.amount}`;
   } else {
     textEl.textContent = "Unnamed expense";
   }
-  // Append the new text span representing the user's expense input to the expenseEl div.
+
+  // Set button text content, give it a class name and append it to each expenseEl div.
+  removeButton.textContent = "x";
+  removeButton.className = "removeButton";
+
+  // Add the event listener for when a user clicks the button to remove an expense.
+  removeButton.addEventListener("click", () => {
+    // Call removeExpense which requires the expense.id as a param.
+    removeExpense(expense.id);
+    saveExpenses(expenses);
+    // Then need to call renderExpenses again to rerender the expenses without the recently deleted expenses.
+    renderExpenses(expenses, filters);
+  });
+
+  // Append the new text anchor element  and removeButton to the expenseEl div.
   expenseEl.appendChild(textEl);
+  expenseEl.appendChild(removeButton);
+
   return expenseEl;
 };
 
 // Render the expenses array to the expenses div. Requires the filters object to
-const renderExpenses = function (expenses, filters) {
+const renderExpenses = (expenses, filters) => {
   // Using filter() spits out a new array where each expense inludes the searchText entered by the user in the filters object.
   const filteredExpenses = expenses.filter(function (expense) {
     return expense.description
@@ -49,15 +78,15 @@ const renderExpenses = function (expenses, filters) {
   document.querySelector("#expenses").innerHTML = "";
 
   // Once filtered, the expenses need to be rendered:
-  filteredExpenses.forEach(function (expense) {
+  filteredExpenses.forEach((expense) => {
     const expenseEl = generateExpenseDOM(expense);
     document.querySelector("#expenses").appendChild(expenseEl);
   });
 };
 
 // // Calculate and render the total expenses to the expenseHeader.
-const totalAmount = function (expenses) {
-  let expenseTotal = 0;
+const totalAmount = (expenses) => {
+  let expenseTotal = "";
   for (let i = 0; i < expenses.length; i++) {
     expenseTotal += expenses[i].amount;
   }
