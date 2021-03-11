@@ -68,7 +68,7 @@ const generateExpenseDOM = (expense) => {
 // Render the expenses array to the expenses div. Requires the filters object to
 const renderExpenses = (expenses, filters) => {
   // Using filter() spits out a new array where each expense inludes the searchText entered by the user in the filters object.
-  const filteredExpenses = expenses.filter(function (expense) {
+  const filteredExpenses = expenses.filter((expense) => {
     return expense.description
       .toLowerCase()
       .includes(filters.searchText.toLowerCase());
@@ -86,9 +86,10 @@ const renderExpenses = (expenses, filters) => {
 
 // // Calculate and render the total expenses to the expenseHeader.
 const totalAmount = (expenses) => {
-  let expenseTotal = "";
+  let total = 0;
+
   for (let i = 0; i < expenses.length; i++) {
-    expenseTotal += expenses[i].amount;
+    total += expenses[i].amount;
   }
-  return expenseTotal;
+  return total;
 };
