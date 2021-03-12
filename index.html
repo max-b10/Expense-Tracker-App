@@ -9,48 +9,116 @@
   </head>
   <body>
     <div class="header">
-      <h1>Expenses Tracker</h1>
-      <!-- <h2>Add expenses below</h2> -->
-      <!-- <h2>Account Balance:</h2> -->
-    </div>
-    <div class="actions">
-      <div class="actionsContainer">
-        <label for=""
-          >Search:
-          <input
-            type="text"
-            name="text"
-            id="searchExpenses"
-            placeholder="Search Expense"
-        /></label>
-        <select name="" id="filterBy">
-          <option value="byHighLow">Sort high - low</option>
-          <option value="byRecent">Sort by recently added</option>
-        </select>
+      <div class="navBar">
+        <h3 class="homepageLink"><a href="#">Return to Portfolio</a></h3>
       </div>
     </div>
-    <div class="expensesContainer">
-      <p class="emptyMessage">No expenses match your search</p>
-      <div>
-        <h3 class="expenseHeader">Expense Total:</h3>
+    <div class="container">
+      <div class="summaryHeader">
+        <h1>Balance:</h1>
+        <div class="secondSummaryHeader">
+          <div>
+            <h3 class="expenseHeader"></h3>
+          </div>
+          <h2 class="incomeHeader">Income Total:</h2>
+        </div>
+        <!-- <h2>Add expenses below</h2> -->
+        <!-- <h2>Account Balance:</h2> -->
       </div>
-
-      <p class="removeInstructions">(Click the 'x' to remove an expense)</p>
-
-      <div id="expenses"></div>
-      <form id="addExpenseForm" action="">
-        <input
-          type="text"
-          name="addExpenseInput"
-          class="input"
-          placeholder="Enter Expense"
-        />
-        <button class="button" id="addExpenseButton">Add Expense</button>
-      </form>
+      <div class="detailsContainer">
+        <div class="expensesContainer">
+          <div class="actions">
+            <div class="actionsContainer">
+              <label for=""
+                >Search:
+                <input
+                  type="text"
+                  name="text"
+                  id="searchExpenses"
+                  placeholder="Search Expense"
+              /></label>
+              <!-- <select name="" id="filterBy">
+            <option value="byHighLow">Sort high - low</option>
+            <option value="byRecent">Sort by recently added</option>
+          </select> -->
+            </div>
+          </div>
+          <p class="emptyMessage">No expenses match your search</p>
+          
+          <p class="removeInstructions">(Click the 'x' to remove an expense)</p>
+          <div id="expenses"></div>
+          <form id="addExpenseForm" action="">
+            <label for="addExpenseDescription">Expense:</label>
+            <input
+              type="text"
+              name="addExpenseDescription"
+              id="addExpenseDescription"
+              class="input"
+              placeholder="Enter Expense"
+            />
+            <label for="addExpenseAmount">Amount(£)</label>
+            <input
+              type="number"
+              name="addExpenseAmount"
+              id="addExpenseAmount"
+              class="input"
+              placeholder="0"
+            />
+            <button class="button" id="addExpenseButton">Add Expense</button>
+          </form>
+        </div>
+        <div class="incomesContainer">
+          <div class="actions">
+            <div class="actionsContainer">
+              <label for=""
+                >Search:
+                <input
+                  type="text"
+                  name="text"
+                  id="searchIncomes"
+                  placeholder="Search Income"
+              /></label>
+              <!-- <select name="" id="filterBy">
+            <option value="byHighLow">Sort high - low</option>
+            <option value="byRecent">Sort by recently added</option>
+          </select> -->
+            </div>
+          </div>
+          <p class="emptyMessage">No Incomes match your search</p>
+          
+          <p class="removeInstructions">(Click the 'x' to remove an income)</p>
+          <div id="incomes"></div>
+          <form id="addIncomeForm" action="">
+            <label for="addIncomeDescription">Income:</label>
+            <input
+              type="text"
+              name="addIncomeDescription"
+              id="addIncomeDescription"
+              class="input"
+              placeholder="Enter Income"
+            />
+            <label for="addIncomeAmount">Amount(£)</label>
+            <input
+              type="number"
+              name="addIncomeAmount"
+              id="addIncomeAmount"
+              class="input"
+              placeholder="0"
+            />
+            <button class="button" id="addIncomeButton">Add Income</button>
+          </form>
+        </div>
+      </div>
     </div>
-    <script src="https://wzrd.in/standalone/uuid%2Fv4@latest"></script>
-
-    <script src="/scripts/functions.js"></script>
+    <div class="footer">
+        <div class="githubLink"><a href="#">My github</a></div>
+        <div class="githubLink"><a href="#">My LinkedIn</a></div>
+      </div>
+    </div>
+    <script src="/uuidv4.js"></script>
+   
+    <script src="/scripts/expensesFunctions.js"></script>
+    <script src="/scripts/incomeFunctions.js"></script>
     <script src="/scripts/app.js"></script>
   </body>
 </html>
