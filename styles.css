@@ -1,9 +1,40 @@
-/* * {
+ * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-} */
-*{
     text-decoration: none;
+} 
+a{
+color: black;
+    text-decoration: none;
+}
+.navBar{
+    background-color:darkgrey;   
+}
+.summaryHeader{
+    text-align: center;
+}
+.secondSummaryHeader{
+    display: flex;
+    justify-content: space-evenly;
+}
+.detailsContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+
+.footer{
+    background-color:darkgrey; 
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0 auto;
+    width: 50%;
 }
