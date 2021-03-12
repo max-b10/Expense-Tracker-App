@@ -33,7 +33,7 @@ descriptionEl.addEventListener("input", (e) => {
 
 // Updates the expense amount to whatever the user types in the amount input on edit page.
 amountEl.addEventListener("input", (e) => {
-  expense.amount = e.target.value;
+  expense.amount = parseFloat(e.target.value);
   saveExpenses(expenses);
 });
 
