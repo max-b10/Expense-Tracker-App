@@ -31,10 +31,11 @@ const generateExpenseDOM = (expense) => {
   const expenseEl = document.createElement("div");
   const textEl = document.createElement("a");
   const removeButton = document.createElement("button");
+
   expenseEl.className = "expenseElement";
 
   // Set the href on the anchor tag created for each expense text element (using the expense id):
-  textEl.setAttribute("href", `/edit.html#${expense.id}`);
+  textEl.setAttribute("href", `/expensesEdit.html#${expense.id}`);
   textEl.className = "expenseText";
 
   // If the expenses description is > 0, create an anchor element with that description (plus amount).
@@ -55,7 +56,7 @@ const generateExpenseDOM = (expense) => {
     removeExpense(expense.id);
     saveExpenses(expenses);
     // Then need to call renderExpenses again to rerender the expenses without the recently deleted expenses.
-    renderExpenses(expenses, filters);
+    renderExpenses(expenses, expenseFilters);
   });
 
   // Append the new text anchor element  and removeButton to the expenseEl div.
@@ -65,13 +66,13 @@ const generateExpenseDOM = (expense) => {
   return expenseEl;
 };
 
-// Render the expenses array to the expenses div. Requires the filters object to
-const renderExpenses = (expenses, filters) => {
-  // Using filter() spits out a new array where each expense inludes the searchText entered by the user in the filters object.
+// Render the expenses array to the expenses div. Requires the expenseFilters object to access the searchText.
+const renderExpenses = (expenses, expenseFilters) => {
+  // Using filter() spits out a new array where each expense inludes the searchText entered by the user in the expenseFilters object.
   const filteredExpenses = expenses.filter((expense) => {
     return expense.description
       .toLowerCase()
-      .includes(filters.searchText.toLowerCase());
+      .includes(expenseFilters.searchText.toLowerCase());
   });
 
   //Need to clear the expenses div before rendering or it will only continue to add the filtered expenses to the existing list.
@@ -84,12 +85,16 @@ const renderExpenses = (expenses, filters) => {
   });
 };
 
-// // Calculate and render the total expenses to the expenseHeader.
-const totalAmount = (expenses) => {
-  let total = 0;
-
-  for (let i = 0; i < expenses.length; i++) {
-    total += expenses[i].amount;
-  }
+// // Calculate the total expenses (to be rendered to the expenseHeader).
+const totalExpenseAmount = () => {
+  // access the live expenses array:
+  let expenses = getSavedExpenses();
+  // reduce() executes a function on each element in the expenses array.
+  // {amount} accesses the amount property on the individual expense object.
+  // The 0 represents where the accumulator should 'start'.
+  let total = expenses.reduce(
+    (accumulator, { amount }) => accumulator + amount,
+    0
+  );
   return total;
 };
