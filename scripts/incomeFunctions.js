@@ -29,7 +29,7 @@ const generateIncomeDOM = (income) => {
   textEl.setAttribute("href", `/incomeEdit#${income.id}`);
   textEl.className = "incomeText";
 
-  if (income.description > 0) {
+  if (income.description.length > 0) {
     textEl.textContent = `${income.description}: £${income.amount}`;
   } else {
     textEl.textContent = "Unnamed income";
@@ -62,4 +62,11 @@ const renderIncomes = (incomes, incomeFilters) => {
   });
 };
 
-const totalIncomeAmount = () => {};
+const totalIncomeAmount = () => {
+  let incomes = getSavedIncomes();
+  let total = incomes.reduce(
+    (accumulator, { amount }) => accumulator + amount,
+    0
+  );
+  return total;
+};
