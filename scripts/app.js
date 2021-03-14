@@ -5,17 +5,24 @@ const expenseFilters = {
   searchText: "",
 };
 let incomes = getSavedIncomes();
+let incomeTotal = totalIncomeAmount();
 // let incomeTotal = totalIncomeAmount();
 const incomeFilters = {
   searchText: "",
 };
+let balance = incomeTotal - expenseTotal;
+console.log(balance);
+// The balance header:
+document.querySelector(".balanceHeader").innerHTML = `Balance: £${balance}`;
 
 // The Expense Total summary header:
 document.querySelector(
   ".expenseHeader"
 ).innerHTML = `Expense Total: £${expenseTotal}`;
 // The Income Total summary header:
-document.querySelector(".incomeHeader").innerHTML = "INCOME TOTAL:"; //`Income Total: £${incomeTotal}`;
+document.querySelector(
+  ".incomeHeader"
+).innerHTML = `Income Total: £${incomeTotal}`;
 
 // Call renderExpenses() and renderIncomes().
 renderExpenses(expenses, expenseFilters);
