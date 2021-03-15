@@ -26,7 +26,7 @@ const generateIncomeDOM = (income) => {
 
   incomeEl.className = "incomeElement";
 
-  textEl.setAttribute("href", `/incomeEdit#${income.id}`);
+  textEl.setAttribute("href", `/incomeEdit.html#${income.id}`);
   textEl.className = "incomeText";
 
   if (income.description.length > 0) {
@@ -34,7 +34,7 @@ const generateIncomeDOM = (income) => {
   } else {
     textEl.textContent = "Unnamed income";
   }
-  removeButton.textContent = "x";
+  removeButton.textContent = "Remove";
   removeButton.className = "removeButton";
 
   removeButton.addEventListener("click", () => {
