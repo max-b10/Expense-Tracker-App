@@ -15,41 +15,56 @@
     </div>
     <div class="container">
       <div class="summaryHeader">
-        <h1>Balance:</h1>
+        <h1 class="balanceHeader"></h1>
         <div class="secondSummaryHeader">
           <div>
             <h3 class="expenseHeader"></h3>
           </div>
-          <h2 class="incomeHeader">Income Total:</h2>
+          <div>
+          <h3 class="incomeHeader"></h3>          
+          </div>
         </div>
-        <!-- <h2>Add expenses below</h2> -->
-        <!-- <h2>Account Balance:</h2> -->
       </div>
+      <div class="mainContent">
       <div class="detailsContainer">
         <div class="expensesContainer">
-          <div class="actions">
-            <div class="actionsContainer">
-              <label for=""
-                >Search:
-                <input
-                  type="text"
-                  name="text"
-                  id="searchExpenses"
-                  placeholder="Search Expense"
-              /></label>
-              <!-- <select name="" id="filterBy">
-            <option value="byHighLow">Sort high - low</option>
-            <option value="byRecent">Sort by recently added</option>
-          </select> -->
-            </div>
+          <div class="expenseActions">
+            <label for="searchExpenses"></label>Search Expenses:
+              <input
+                autocomplete="off"
+                type="text"
+                name="text"
+                id="searchExpenses"
+            /></label>
           </div>
-          <p class="emptyMessage">No expenses match your search</p>
-          
-          <p class="removeInstructions">(Click the 'x' to remove an expense)</p>
+          <div id="expensesContainer">
           <div id="expenses"></div>
+          </div>
+        </div>
+        <div class="incomesContainer">
+          <div class="incomeActions">
+            <label for="searchIncomes">
+              Search Incomes: 
+              <input
+                autocomplete="off"
+                type="text"
+                name="text"
+                id="searchIncomes"
+            /></label>
+          </div>
+          <div id="incomesContainer">
+          <div id="incomes">
+
+          </div>
+          </div>
+        </div>
+      </div>
+      <div class="formsContainer">
+        <div class="formContainer">
           <form id="addExpenseForm" action="">
             <label for="addExpenseDescription">Expense:</label>
             <input
+              autocomplete="off"
               type="text"
               name="addExpenseDescription"
               id="addExpenseDescription"
@@ -58,39 +73,22 @@
             />
             <label for="addExpenseAmount">Amount(£)</label>
             <input
+              autocomplete="off"
               type="number"
+              step="0.01"
               name="addExpenseAmount"
               id="addExpenseAmount"
               class="input"
               placeholder="0"
             />
-            <button class="button" id="addExpenseButton">Add Expense</button>
+            <button class="addButton" id="addExpenseButton">Add Expense</button>
           </form>
         </div>
-        <div class="incomesContainer">
-          <div class="actions">
-            <div class="actionsContainer">
-              <label for=""
-                >Search:
-                <input
-                  type="text"
-                  name="text"
-                  id="searchIncomes"
-                  placeholder="Search Income"
-              /></label>
-              <!-- <select name="" id="filterBy">
-            <option value="byHighLow">Sort high - low</option>
-            <option value="byRecent">Sort by recently added</option>
-          </select> -->
-            </div>
-          </div>
-          <p class="emptyMessage">No Incomes match your search</p>
-          
-          <p class="removeInstructions">(Click the 'x' to remove an income)</p>
-          <div id="incomes"></div>
+        <div class="formContainer">
           <form id="addIncomeForm" action="">
             <label for="addIncomeDescription">Income:</label>
             <input
+              autocomplete="off"
               type="text"
               name="addIncomeDescription"
               id="addIncomeDescription"
@@ -99,24 +97,26 @@
             />
             <label for="addIncomeAmount">Amount(£)</label>
             <input
+              autocomplete="off"
               type="number"
+              step="0.01"
               name="addIncomeAmount"
               id="addIncomeAmount"
               class="input"
               placeholder="0"
             />
-            <button class="button" id="addIncomeButton">Add Income</button>
+            <button class="addButton" id="addIncomeButton">Add Income</button>
           </form>
         </div>
       </div>
-    </div>
-    <div class="footer">
+      </div>
+      <div class="footer">
         <div class="githubLink"><a href="#">My github</a></div>
         <div class="githubLink"><a href="#">My LinkedIn</a></div>
       </div>
     </div>
     <script src="/uuidv4.js"></script>
-   
+
     <script src="/scripts/expensesFunctions.js"></script>
     <script src="/scripts/incomeFunctions.js"></script>
     <script src="/scripts/app.js"></script>
