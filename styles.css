@@ -6,7 +6,7 @@
     text-decoration: none;
 } 
 a{
-color: black;
+    color: black;
     text-decoration: none;
 }
 p{
@@ -15,6 +15,7 @@ p{
 }
 .navBar{
     background-color:darkgrey;   
+    border: black solid 0.5px;
 }
 .balanceHeader{
     margin-top: 1rem;
