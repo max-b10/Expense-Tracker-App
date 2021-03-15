@@ -47,7 +47,7 @@ const generateExpenseDOM = (expense) => {
   }
 
   // Set button text content, give it a class name and append it to each expenseEl div.
-  removeButton.textContent = "x";
+  removeButton.textContent = "Remove";
   removeButton.className = "removeButton";
 
   // Add the event listener for when a user clicks the button to remove an expense.
