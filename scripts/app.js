@@ -11,7 +11,7 @@ const incomeFilters = {
   searchText: "",
 };
 let balance = incomeTotal - expenseTotal;
-console.log(balance);
+// console.log(balance);
 // The balance header:
 document.querySelector(".balanceHeader").innerHTML = `Balance: £${balance}`;
 
