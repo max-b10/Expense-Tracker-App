@@ -1,4 +1,4 @@
-// expenses
+// Expenses
 let expenses = getSavedExpenses();
 let expenseTotal = totalExpenseAmount();
 const expenseFilters = {
